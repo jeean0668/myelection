@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:myelection/view/screen/home_controller.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 
 class Home extends StatelessWidget{
@@ -26,18 +27,11 @@ class Home extends StatelessWidget{
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          SizedBox(height : MediaQuery.of(context).size.height * 0.3),
-        
-          Text(
-              "우리동네 김반장",
-              style : const TextStyle(
-                fontSize: 35.0,
-                fontWeight: FontWeight.w700,
-              ),
-          ),
-          Text(
-            "내 주변의 선거를 검색합니다.",
-          ),
+          SizedBox(height: MediaQuery.of(context).size.height * 0.04,),
+          _bulidHomeHeaderImage(),
+          SizedBox(height: MediaQuery.of(context).size.height * 0.04,),
+          _buildHomeHeaderTitle(),
+          Text( "내 주변의 선거를 검색합니다.",),
           Obx((){
               return _buildHomeSearchBar();
             }
@@ -47,9 +41,29 @@ class Home extends StatelessWidget{
     );
   }
 
+  Text _buildHomeHeaderTitle() {
+    return Text(
+            "우리동네 김반장",
+            style : const TextStyle(
+              fontSize: 35.0,
+              fontWeight: FontWeight.w700,
+            ),
+        );
+  }
+
+  Container _bulidHomeHeaderImage() {
+    return Container(
+          height : 200.0,
+          width : 200.0,
+          child : Image.asset(
+            "assets/raise-hand.png",
+          ),
+        );
+  }
+
   Widget _buildHomeSearchBar() {
     return Padding(
-              padding: const EdgeInsets.fromLTRB(30.0, 20.0, 30.0, 10.0),
+              padding: const EdgeInsets.fromLTRB(40.0, 20.0, 40.0, 10.0),
               child: Container(
                 height : 50.0,
                 child: TextFormField(
